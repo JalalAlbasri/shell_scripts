@@ -19,14 +19,14 @@ TR_FILE=$TROOT/$FONT_PREFIX.tr
 TRAINEDDATA_FILE=$TROOT/build/$LANG/$FONT_PREFIX.traineddata
 
 #enable for other users
-mkdir $TROOT/build; mkdir $TROOT/build/$2
+mkdir $TROOT/build; mkdir $TROOT/build/$LANG
 
 #download the font files from my guthub/dropbox
 #download a tar folder and untar it
 #GET http://dl.dropbox.com/u/106343520/tiffs/$FONT_PREFIX.tif > $TIFF_FILE
 #do the same for numbers.txt and font_properties
 #tar xzf traintess.num.tar.gz
-cp $TROOT/tiffs/$FONT_PREFIX.tif $TIFF_FILE
+cp $TROOT/fonts/$FONT_PREFIX.tif $TIFF_FILE
 echo "Environment Built"
 
 echo "## Create box files for $font_prefix..."
@@ -80,4 +80,4 @@ if [ -f $TRAINEDDATA_FILE]; then
 	echo "## $LANG.trainddata sucsessfully built"
 fi
 
-su cp $TRAINNEDDATA_FILE $TESSDATA/$lang.traineddata
+sudo cp build/num/*.traineddata /usr/share/tesseract-ocr/tessdata
